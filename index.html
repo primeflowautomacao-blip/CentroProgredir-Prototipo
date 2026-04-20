@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centro Progredir — Especialista em Desenvolvimento Infantil</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #1a4a2e;
+    --green-dark: #1e5c35;
+    --green-mid: #2d7a4a;
+    --green-light: #8fbc9a;
+    --green-sage: #a8ccb0;
+    --green-pale: #d4e8d8;
+    --green-frost: #eef5f0;
+    --white: #ffffff;
+    --off-white: #f8faf8;
+    --text-primary: #1a2e1f;
+    --text-secondary: #3d5c47;
+    --text-muted: #6b8c75;
+    --border: #daeadf;
+    --shadow-sm: 0 1px 3px rgba(26,74,46,0.08);
+    --shadow-md: 0 4px 20px rgba(26,74,46,0.12);
+    --shadow-lg: 0 12px 48px rgba(26,74,46,0.16);
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 max(24px, 5vw);
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 44px;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--green-dark); }
+
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn-whatsapp-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border: 1.5px solid var(--green-mid);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: all 0.2s;
+  }
+
+  .btn-whatsapp-nav:hover {
+    background: var(--green-dark);
+    color: var(--white);
+    border-color: var(--green-dark);
+  }
+
+  .btn-primary-nav {
+    padding: 9px 20px;
+    background: var(--green-dark);
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: all 0.2s;
+  }
+
+  .btn-primary-nav:hover {
+    background: var(--green-deep);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 120px max(24px, 5vw) 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    background: var(--off-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--green-pale) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, var(--green-frost) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--green-pale);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--green-dark);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 4.5vw, 58px);
+    line-height: 1.12;
+    color: var(--green-deep);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green-mid);
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    color: var(--text-secondary);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .btn-hero-primary {
+    padding: 16px 32px;
+    background: var(--green-dark);
+    border: none;
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: all 0.25s;
+    box-shadow: 0 4px 16px rgba(30,92,53,0.3);
+  }
+
+  .btn-hero-primary:hover {
+    background: var(--green-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(30,92,53,0.35);
+  }
+
+  .btn-hero-secondary {
+    padding: 16px 28px;
+    background: transparent;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s;
+  }
+
+  .btn-hero-secondary:hover {
+    border-color: var(--green-mid);
+    color: var(--green-dark);
+    background: var(--green-frost);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+  }
+
+  .stat-item { }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--green-deep);
+    display: block;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  /* HERO CHAT PREVIEW */
+  .hero-chat {
+    position: relative;
+    z-index: 1;
+  }
+
+  .chat-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .chat-header {
+    padding: 20px 24px;
+    background: var(--green-deep);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .chat-header-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--green-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .chat-header-avatar img {
+    width: 28px;
+    height: auto;
+    filter: brightness(0) invert(1) opacity(0.9);
+  }
+
+  .chat-header-info { flex: 1; }
+
+  .chat-header-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    display: block;
+  }
+
+  .chat-header-status {
+    font-size: 12px;
+    color: var(--green-sage);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .status-dot {
+    width: 6px; height: 6px;
+    background: #5dde8a;
+    border-radius: 50%;
+  }
+
+  .chat-messages {
+    padding: 24px;
+    min-height: 280px;
+    max-height: 340px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--off-white);
+  }
+
+  .msg {
+    display: flex;
+    gap: 10px;
+    animation: msgIn 0.3s ease;
+  }
+
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .msg.user { flex-direction: row-reverse; }
+
+  .msg-avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--green-pale);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--green-dark);
+  }
+
+  .msg.bot .msg-avatar { background: var(--green-deep); color: var(--white); }
+
+  .msg-bubble {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-primary);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+
+  .msg.bot .msg-bubble {
+    border-radius: 4px 16px 16px 16px;
+  }
+
+  .msg.user .msg-bubble {
+    background: var(--green-dark);
+    color: var(--white);
+    border-color: transparent;
+    border-radius: 16px 4px 16px 16px;
+    box-shadow: none;
+  }
+
+  .chat-input-area {
+    padding: 16px 20px;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .chat-input {
+    flex: 1;
+    padding: 11px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: var(--off-white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .chat-input:focus { border-color: var(--green-mid); }
+  .chat-input::placeholder { color: var(--text-muted); }
+
+  .chat-send-btn {
+    width: 40px; height: 40px;
+    background: var(--green-dark);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .chat-send-btn:hover {
+    background: var(--green-deep);
+    transform: scale(1.05);
+  }
+
+  .chat-send-btn svg { color: white; }
+
+  /* QUICK ACTIONS */
+  .quick-actions {
+    padding: 12px 20px 4px;
+    background: var(--white);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .quick-btn {
+    padding: 6px 12px;
+    background: var(--green-frost);
+    border: 1px solid var(--green-pale);
+    border-radius: 100px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--green-dark);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .quick-btn:hover {
+    background: var(--green-pale);
+    border-color: var(--green-sage);
+  }
+
+  /* SECTION COMMONS */
+  section { padding: 96px max(24px, 5vw); }
+
+  .section-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    color: var(--green-deep);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--green-mid);
+  }
+
+  .section-desc {
+    font-size: 16px;
+    color: var(--text-secondary);
+    font-weight: 300;
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+
+  .services-header { margin-bottom: 56px; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .service-card {
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green-mid), var(--green-sage));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    border-color: var(--green-pale);
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    background: var(--green-frost);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--green-dark);
+  }
+
+  .service-name {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--green-deep);
+    margin-bottom: 10px;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--green-deep);
+    color: var(--white);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about .section-label { color: var(--green-sage); }
+
+  .about .section-title { color: var(--white); }
+  .about .section-title em { color: var(--green-light); }
+
+  .about-desc {
+    font-size: 16px;
+    color: rgba(255,255,255,0.72);
+    font-weight: 300;
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+
+  .about-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .about-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .about-stat-card {
+    padding: 28px 24px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-lg);
+    transition: background 0.2s;
+  }
+
+  .about-stat-card:hover { background: rgba(255,255,255,0.1); }
+
+  .about-stat-card:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .about-stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--white);
+    display: block;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+
+  .about-stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+  }
+
+  /* TEAM */
+  .team { background: var(--off-white); }
+
+  .team-header { margin-bottom: 56px; }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .team-card {
+    padding: 28px 24px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all 0.25s;
+  }
+
+  .team-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .team-initials {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--green-mid), var(--green-deep));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--white);
+    margin: 0 auto 16px;
+  }
+
+  .team-role {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 6px;
+  }
+
+  .team-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--green-deep);
+  }
+
+  /* CHAT SECTION */
+  .chat-section {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .chat-section-info { }
+
+  .chat-section-info .section-desc { margin-bottom: 40px; }
+
+  .chat-features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .chat-feature {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .chat-feature-icon {
+    width: 36px; height: 36px;
+    background: var(--green-frost);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green-dark);
+    flex-shrink: 0;
+  }
+
+  .chat-feature-text h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green-deep);
+    margin-bottom: 4px;
+  }
+
+  .chat-feature-text p {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .full-chat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    height: 560px;
+  }
+
+  .full-chat-header {
+    padding: 18px 24px;
+    background: var(--green-deep);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .full-chat-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--green-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .full-chat-name { font-size: 14px; font-weight: 600; color: var(--white); }
+  .full-chat-sub {
+    font-size: 12px;
+    color: var(--green-sage);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .full-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--off-white);
+    scroll-behavior: smooth;
+  }
+
+  .full-chat-messages::-webkit-scrollbar { width: 4px; }
+  .full-chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .full-chat-messages::-webkit-scrollbar-thumb { background: var(--green-pale); border-radius: 4px; }
+
+  .full-chat-quick {
+    padding: 10px 16px 0;
+    background: var(--white);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+  }
+
+  .full-chat-input-row {
+    padding: 12px 16px 16px;
+    background: var(--white);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .full-chat-input {
+    flex: 1;
+    padding: 11px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: var(--off-white);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+
+  .full-chat-input:focus { border-color: var(--green-mid); }
+  .full-chat-input::placeholder { color: var(--text-muted); }
+
+  .full-chat-send {
+    width: 40px; height: 40px;
+    background: var(--green-dark);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .full-chat-send:hover { background: var(--green-deep); }
+  .full-chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .typing-dots {
+    display: flex;
+    gap: 4px;
+    padding: 10px 14px;
+    background: var(--white);
+    border-radius: 4px 16px 16px 16px;
+    border: 1px solid var(--border);
+  }
+
+  .typing-dots span {
+    width: 6px; height: 6px;
+    background: var(--green-sage);
+    border-radius: 50%;
+    animation: bounce 1.2s infinite;
+  }
+
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-6px); }
+  }
+
+  /* LOCATION */
+  .location-section {
+    background: var(--off-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .location-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+  }
+
+  .location-detail {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+
+  .location-detail:last-child { margin-bottom: 0; }
+
+  .location-detail-icon {
+    width: 40px; height: 40px;
+    background: var(--green-frost);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green-dark);
+    flex-shrink: 0;
+  }
+
+  .location-detail-text label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .location-detail-text span {
+    font-size: 15px;
+    color: var(--text-primary);
+    font-weight: 400;
+  }
+
+  .location-detail-text a {
+    font-size: 15px;
+    color: var(--green-dark);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .location-detail-text a:hover { text-decoration: underline; }
+
+  .map-placeholder {
+    background: var(--green-frost);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: var(--green-mid);
+  }
+
+  .map-placeholder p {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .map-placeholder a {
+    padding: 10px 20px;
+    background: var(--green-dark);
+    color: var(--white);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .map-placeholder a:hover { background: var(--green-deep); }
+
+  /* FOOTER */
+  footer {
+    background: var(--green-deep);
+    color: rgba(255,255,255,0.65);
+    padding: 56px max(24px, 5vw) 32px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-brand img {
+    height: 48px;
+    width: auto;
+    margin-bottom: 16px;
+    filter: brightness(0) invert(1) opacity(0.9);
+  }
+
+  .footer-brand p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.55);
+    max-width: 260px;
+    margin-bottom: 20px;
+  }
+
+  .footer-col h4 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col ul li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+  }
+
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover { color: var(--white); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .footer-women-owned {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* FLOATING WHATSAPP */
+  .floating-whatsapp {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 200;
+    width: 56px; height: 56px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+
+  .floating-whatsapp:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+  }
+
+  /* MODAL CHAT */
+  .chat-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    z-index: 300;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .chat-modal-overlay.open { display: flex; }
+
+  .chat-modal {
+    width: 100%;
+    max-width: 520px;
+    height: 620px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-chat-header {
+    padding: 20px 24px;
+    background: var(--green-deep);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  .modal-chat-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    padding: 4px;
+    transition: color 0.2s;
+  }
+
+  .modal-chat-close:hover { color: var(--white); }
+
+  .modal-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--off-white);
+    scroll-behavior: smooth;
+  }
+
+  .modal-chat-messages::-webkit-scrollbar { width: 4px; }
+  .modal-chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .modal-chat-messages::-webkit-scrollbar-thumb { background: var(--green-pale); border-radius: 4px; }
+
+  .modal-quick-actions {
+    padding: 10px 16px 0;
+    background: var(--white);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+  }
+
+  .modal-input-row {
+    padding: 12px 16px 16px;
+    background: var(--white);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .modal-input {
+    flex: 1;
+    padding: 11px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: var(--off-white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .modal-input:focus { border-color: var(--green-mid); }
+  .modal-input::placeholder { color: var(--text-muted); }
+
+  .modal-send {
+    width: 40px; height: 40px;
+    background: var(--green-dark);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .modal-send:hover { background: var(--green-deep); }
+  .modal-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 48px; }
+    .hero-chat { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .chat-section { grid-template-columns: 1fr; gap: 48px; }
+    .location-section { grid-template-columns: 1fr; gap: 48px; }
+    .footer-top { grid-template-columns: 1fr; gap: 40px; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 64px 20px; }
+    .hero { padding: 100px 20px 64px; }
+    .hero-stats { gap: 24px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="Centro Progredir" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span style="display:none;font-family:'DM Serif Display',serif;font-size:20px;color:var(--green-deep);font-weight:400;">Centro <strong>Progredir</strong></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Servicos</a></li>
+    <li><a href="#equipa">Equipa</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="https://wa.me/244925668658" target="_blank" class="btn-whatsapp-nav">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <button class="btn-primary-nav" onclick="openChat()">Agendar Atendimento</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-tag">Talatona, Luanda</span>
+    <h1>Desenvolvimento infantil com <em>abordagem especializada</em></h1>
+    <p class="hero-desc">Equipa multidisciplinar dedicada ao acompanhamento integral da crianca. Avaliacao, intervencao e suporte — em cada fase do crescimento.</p>
+    <div class="hero-actions">
+      <button class="btn-hero-primary" onclick="openChat()">Agendar Atendimento</button>
+      <a href="https://wa.me/244925668658" target="_blank" class="btn-hero-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar pelo WhatsApp
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">5+</span>
+        <span class="stat-label">Especialidades</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">Multidisciplinar</span>
+        <span class="stat-label">Abordagem integrada</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">Talatona</span>
+        <span class="stat-label">Cond. Balumuka</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-chat">
+    <div class="chat-card">
+      <div class="chat-header">
+        <div class="chat-header-avatar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </div>
+        <div class="chat-header-info">
+          <span class="chat-header-name">Assistente Centro Progredir</span>
+          <span class="chat-header-status"><span class="status-dot"></span>Disponivel agora</span>
+        </div>
+      </div>
+      <div class="chat-messages" id="preview-messages">
+        <div class="msg bot">
+          <div class="msg-avatar">P</div>
+          <div class="msg-bubble">Ola, bem-vindo ao Centro Progredir. Como posso ajudar a crianca hoje?</div>
+        </div>
+        <div class="msg user">
+          <div class="msg-avatar" style="background:var(--green-pale);color:var(--green-dark);">U</div>
+          <div class="msg-bubble">Gostaria de agendar uma avaliacao</div>
+        </div>
+        <div class="msg bot">
+          <div class="msg-avatar">P</div>
+          <div class="msg-bubble">Com prazer. Pode indicar a idade da crianca e qual a principal preocupacao? Assim direciono para o especialista mais adequado.</div>
+        </div>
+      </div>
+      <div class="quick-actions">
+        <button class="quick-btn" onclick="openChat('Quero agendar uma consulta')">Agendar consulta</button>
+        <button class="quick-btn" onclick="openChat('Quais são os serviços disponíveis?')">Ver servicos</button>
+        <button class="quick-btn" onclick="openChat('Como funciona a avaliação?')">Como funciona</button>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" placeholder="Escreva a sua questao..." id="hero-input" onkeydown="if(event.key==='Enter')openChatWithInput()">
+        <button class="chat-send-btn" onclick="openChatWithInput()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicos">
+  <div class="services-header">
+    <span class="section-label">Servicos</span>
+    <h2 class="section-title">Uma equipa para cada<br><em>necessidade de desenvolvimento</em></h2>
+    <p class="section-desc">Intervencoes especializadas, coordenadas entre si, para um acompanhamento coerente e eficaz.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </div>
+      <div class="service-name">Psicologia Infantil</div>
+      <p class="service-desc">Avaliacao e acompanhamento emocional e comportamental. Intervencao em ansiedade, dificuldades de atencao, relacionamento social e regulacao emocional.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+      </div>
+      <div class="service-name">Psicopedagogia</div>
+      <p class="service-desc">Identificacao e intervencao nas dificuldades de aprendizagem. Avaliacao cognitiva e elaboracao de planos pedagogicos individualizados.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+      </div>
+      <div class="service-name">Fonoaudiologia</div>
+      <p class="service-desc">Avaliacao e tratamento de disturbios da fala, linguagem, voz e deglutição. Acompanhamento especializado para cada fase do desenvolvimento comunicativo.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+      </div>
+      <div class="service-name">Musicoterapia</div>
+      <p class="service-desc">Uso terapeutico da musica para promover desenvolvimento cognitivo, emocional e social. Abordagem nao-verbal indicada para diversas necessidades especiais.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      </div>
+      <div class="service-name">Terapia Educacional</div>
+      <p class="service-desc">Suporte especializado para criancas com necessidades educativas especiais. Planificacao e acompanhamento da inclusao escolar com orientacao para familias.</p>
+    </div>
+    <div class="service-card" style="background:var(--green-deep);border-color:transparent;cursor:pointer;" onclick="openChat('Quero saber mais sobre os serviços disponíveis')">
+      <div class="service-icon" style="background:rgba(255,255,255,0.1);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+      </div>
+      <div class="service-name" style="color:white;">Tem uma questao especifica?</div>
+      <p class="service-desc" style="color:rgba(255,255,255,0.6);">O nosso assistente pode ajudar a identificar o servico mais indicado para a sua crianca.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="about-grid">
+    <div>
+      <span class="section-label">Sobre o Centro</span>
+      <h2 class="section-title">Especialistas no que<br><em>mais importa</em></h2>
+      <p class="about-desc">O Centro Progredir nasce da convicção de que cada criança tem um percurso unico. A nossa abordagem multidisciplinar garante que profissionais de diferentes areas colaboram em torno de um objetivo comum: o bem-estar e o desenvolvimento integral de cada criança.</p>
+      <p class="about-desc">Localizado no Condominio Balumuka, em Talatona, o centro combina rigor clinico com um ambiente acolhedor, pensado para a criança e para a familia.</p>
+      <span class="about-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        Empresa liderada por mulheres
+      </span>
+    </div>
+    <div class="about-visual">
+      <div class="about-stat-card">
+        <span class="about-stat-num">Abordagem Integrada</span>
+        <span class="about-stat-label">Todas as especialidades comunicam entre si para um plano de intervencao coerente</span>
+      </div>
+      <div class="about-stat-card">
+        <span class="about-stat-num">5</span>
+        <span class="about-stat-label">Especialidades clinicas</span>
+      </div>
+      <div class="about-stat-card">
+        <span class="about-stat-num">Talatona</span>
+        <span class="about-stat-label">Cond. Balumuka, Luanda</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="equipa">
+  <div class="team-header">
+    <span class="section-label">Equipa</span>
+    <h2 class="section-title">Profissionais dedicados<br>ao <em>desenvolvimento infantil</em></h2>
+    <p class="section-desc">Uma equipa multidisciplinar com formacao especializada, unida pelo mesmo compromisso com cada criança.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-initials">Ps</div>
+      <div class="team-role">Psicologia</div>
+      <div class="team-name">Psicologa Clinica</div>
+    </div>
+    <div class="team-card">
+      <div class="team-initials">Pp</div>
+      <div class="team-role">Psicopedagogia</div>
+      <div class="team-name">Psicopedagoga</div>
+    </div>
+    <div class="team-card">
+      <div class="team-initials">Fn</div>
+      <div class="team-role">Fonoaudiologia</div>
+      <div class="team-name">Fonoaudiologa</div>
+    </div>
+    <div class="team-card">
+      <div class="team-initials">Mt</div>
+      <div class="team-role">Musicoterapia</div>
+      <div class="team-name">Musicoterapeuta</div>
+    </div>
+    <div class="team-card">
+      <div class="team-initials">Te</div>
+      <div class="team-role">Terapia Educacional</div>
+      <div class="team-name">Terapeuta Educacional</div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAT SECTION -->
+<section class="chat-section" id="chat">
+  <div class="chat-section-info">
+    <span class="section-label">Atendimento Digital</span>
+    <h2 class="section-title">Inicie o processo<br><em>agora mesmo</em></h2>
+    <p class="section-desc">O nosso assistente responde as suas duvidas, orienta sobre os servicos disponiveis e ajuda a agendar o primeiro atendimento — de forma rapida e discreta.</p>
+    <div class="chat-features">
+      <div class="chat-feature">
+        <div class="chat-feature-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </div>
+        <div class="chat-feature-text">
+          <h4>Resposta imediata</h4>
+          <p>Sem espera. O assistente esta disponivel para responder em qualquer momento.</p>
+        </div>
+      </div>
+      <div class="chat-feature">
+        <div class="chat-feature-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <div class="chat-feature-text">
+          <h4>Orientacao especializada</h4>
+          <p>Direcionamento para o profissional mais indicado com base na necessidade apresentada.</p>
+        </div>
+      </div>
+      <div class="chat-feature">
+        <div class="chat-feature-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        </div>
+        <div class="chat-feature-text">
+          <h4>Agendamento simplificado</h4>
+          <p>Solicite o seu atendimento diretamente pelo chat ou seja redirecionado para o WhatsApp.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-chat-card">
+    <div class="full-chat-header">
+      <div class="full-chat-avatar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      </div>
+      <div>
+        <div class="full-chat-name">Assistente Centro Progredir</div>
+        <div class="full-chat-sub"><span class="status-dot"></span>Online</div>
+      </div>
+    </div>
+    <div class="full-chat-messages" id="section-chat-messages">
+      <div class="msg bot">
+        <div class="msg-avatar" style="background:var(--green-deep);color:white;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;">P</div>
+        <div class="msg-bubble">Ola. Sou o assistente do Centro Progredir. Estou aqui para ajudar com informacoes sobre os nossos servicos e para orientar o agendamento. Como posso ajudar?</div>
+      </div>
+    </div>
+    <div class="full-chat-quick" id="section-quick-actions">
+      <button class="quick-btn" onclick="sectionQuickSend('Quero agendar uma consulta')">Agendar consulta</button>
+      <button class="quick-btn" onclick="sectionQuickSend('Quais são os serviços disponíveis?')">Ver servicos</button>
+      <button class="quick-btn" onclick="sectionQuickSend('Como funciona a avaliação inicial?')">Como funciona</button>
+      <button class="quick-btn" onclick="sectionQuickSend('Onde fica o centro?')">Localizacao</button>
+    </div>
+    <div class="full-chat-input-row">
+      <input type="text" class="full-chat-input" id="section-chat-input" placeholder="Escreva a sua mensagem..." onkeydown="if(event.key==='Enter')sectionSendMessage()">
+      <button class="full-chat-send" id="section-send-btn" onclick="sectionSendMessage()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location-section" id="contacto">
+  <div>
+    <span class="section-label">Localizacao</span>
+    <h2 class="section-title">Visite-nos em<br><em>Talatona</em></h2>
+    <p class="section-desc" style="margin-bottom:40px;">Estamos situados no Condominio Balumuka, uma das zonas mais acessiveis de Talatona, Luanda.</p>
+    <div class="location-card">
+      <div class="location-detail">
+        <div class="location-detail-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </div>
+        <div class="location-detail-text">
+          <label>Endereco</label>
+          <span>Vivenda D4, Condominio Balumuka<br>Talatona, Luanda</span>
+        </div>
+      </div>
+      <div class="location-detail">
+        <div class="location-detail-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.47 2 2 0 0 1 3.55 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6.29 6.29l.9-.89a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"></path></svg>
+        </div>
+        <div class="location-detail-text">
+          <label>WhatsApp</label>
+          <a href="https://wa.me/244925668658">+244 925 668 658</a>
+        </div>
+      </div>
+      <div class="location-detail">
+        <div class="location-detail-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </div>
+        <div class="location-detail-text">
+          <label>Atendimento</label>
+          <span>Segunda a Sabado — horario a confirmar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="map-placeholder">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+    <p>Condominio Balumuka<br>Vivenda D4, Talatona</p>
+    <a href="https://maps.google.com/?q=8.9084477,13.1815792" target="_blank">Ver no Google Maps</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Centro Progredir" onerror="this.style.display='none'">
+      <p>Especialistas em desenvolvimento infantil. Equipa multidisciplinar dedicada ao acompanhamento integral da crianca em Luanda.</p>
+      <span class="footer-women-owned">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        Empresa liderada por mulheres
+      </span>
+    </div>
+    <div class="footer-col">
+      <h4>Servicos</h4>
+      <ul>
+        <li>Psicologia Infantil</li>
+        <li>Psicopedagogia</li>
+        <li>Fonoaudiologia</li>
+        <li>Musicoterapia</li>
+        <li>Terapia Educacional</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li>Cond. Balumuka, Talatona</li>
+        <li>Vivenda D4, Luanda</li>
+        <li><a href="https://wa.me/244925668658">+244 925 668 658</a></li>
+        <li style="margin-top:16px;"><a href="https://wa.me/244925668658">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>2025 Centro Progredir. Todos os direitos reservados.</span>
+    <span>Talatona, Luanda, Angola</span>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/244925668658" target="_blank" class="floating-whatsapp" title="Falar pelo WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- MODAL CHAT -->
+<div class="chat-modal-overlay" id="chatModalOverlay" onclick="if(event.target===this)closeChat()">
+  <div class="chat-modal">
+    <div class="modal-chat-header">
+      <div class="full-chat-avatar" style="background:var(--green-mid);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      </div>
+      <div style="flex:1;">
+        <div class="full-chat-name">Assistente Centro Progredir</div>
+        <div class="full-chat-sub"><span class="status-dot"></span>Online</div>
+      </div>
+      <button class="modal-chat-close" onclick="closeChat()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="modal-chat-messages" id="modal-chat-messages">
+      <div class="msg bot">
+        <div class="msg-avatar" style="background:var(--green-deep);color:white;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;">P</div>
+        <div class="msg-bubble">Ola, bem-vindo ao Centro Progredir. Estou aqui para ajudar com informacoes sobre os nossos servicos e para apoiar no agendamento. Como posso ajudar?</div>
+      </div>
+    </div>
+    <div class="modal-quick-actions" id="modal-quick-actions">
+      <button class="quick-btn" onclick="modalQuickSend('Quero agendar uma consulta')">Agendar consulta</button>
+      <button class="quick-btn" onclick="modalQuickSend('Quais são os serviços disponíveis?')">Ver servicos</button>
+      <button class="quick-btn" onclick="modalQuickSend('Como funciona a avaliação inicial?')">Como funciona</button>
+    </div>
+    <div class="modal-input-row">
+      <input type="text" class="modal-input" id="modal-chat-input" placeholder="Escreva a sua mensagem..." onkeydown="if(event.key==='Enter')modalSendMessage()">
+      <button class="modal-send" id="modal-send-btn" onclick="modalSendMessage()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+const API_URL = 'https://primeflow-chat-server.onrender.com/chat';
+
+const SYSTEM = `Voce e o assistente virtual do Centro Progredir, uma clinica especializada em desenvolvimento infantil localizada no Condominio Balumuka, Vivenda D4, Talatona, Luanda, Angola.
+
+A equipa e composta por: Psicologa Clinica, Psicopedagoga, Fonoaudiologa, Musicoterapeuta e Terapeuta Educacional.
+
+Centro Progredir e liderado por mulheres e foca-se no acompanhamento integral de criancas.
+
+Contacto WhatsApp: +244 925 668 658
+
+O seu papel e:
+- Responder perguntas sobre os servicos disponiveis
+- Orientar os pais e responsaveis sobre qual especialista e mais adequado para a situacao
+- Ajudar a agendar consultas ou redirecionar para o WhatsApp quando necessario
+- Ser claro, profissional, empático e objetivo
+
+Instrucoes de tom:
+- Nao usar emojis
+- Linguagem clara, direta e acolhedora
+- Nao usar frases cliche ou exageradas
+- Foco em transmitir confiança e competencia
+- Respostas concisas mas completas
+
+Para agendamentos, sempre indicar o WhatsApp: +244 925 668 658 ou o link wa.me/244925668658`;
+
+// Modal state
+let modalHistory = [];
+let modalLoading = false;
+
+// Section chat state
+let sectionHistory = [];
+let sectionLoading = false;
+
+function openChat(prefilledMsg) {
+  document.getElementById('chatModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => {
+    const input = document.getElementById('modal-chat-input');
+    if (prefilledMsg) {
+      input.value = prefilledMsg;
+      modalSendMessage();
+    } else {
+      input.focus();
+    }
+  }, 100);
+}
+
+function closeChat() {
+  document.getElementById('chatModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openChatWithInput() {
+  const val = document.getElementById('hero-input').value.trim();
+  openChat(val || undefined);
+  document.getElementById('hero-input').value = '';
+}
+
+function appendMessage(container, role, text) {
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+
+  const avatar = document.createElement('div');
+  avatar.style.cssText = `width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;`;
+  if (role === 'bot') {
+    avatar.style.background = 'var(--green-deep)';
+    avatar.style.color = 'white';
+    avatar.textContent = 'P';
+  } else {
+    avatar.style.background = 'var(--green-pale)';
+    avatar.style.color = 'var(--green-dark)';
+    avatar.textContent = 'U';
+  }
+
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  if (role === 'user') {
+    bubble.style.cssText = 'background:var(--green-dark);color:white;border-color:transparent;border-radius:16px 4px 16px 16px;box-shadow:none;';
+  } else {
+    bubble.style.borderRadius = '4px 16px 16px 16px';
+  }
+  bubble.textContent = text;
+
+  div.appendChild(avatar);
+  div.appendChild(bubble);
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function showTyping(container) {
+  const div = document.createElement('div');
+  div.className = 'msg bot';
+  div.id = 'typing-' + container.id;
+
+  const avatar = document.createElement('div');
+  avatar.style.cssText = `width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;background:var(--green-deep);color:white;`;
+  avatar.textContent = 'P';
+
+  const dots = document.createElement('div');
+  dots.className = 'typing-dots';
+  dots.innerHTML = '<span></span><span></span><span></span>';
+
+  div.appendChild(avatar);
+  div.appendChild(dots);
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function removeTyping(container) {
+  const el = document.getElementById('typing-' + container.id);
+  if (el) el.remove();
+}
+
+async function sendToAPI(history) {
+  const res = await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages: history, system: SYSTEM })
+  });
+  const data = await res.json();
+  if (data.error) throw new Error(data.error.message || 'Erro na resposta');
+  return data.reply;
+}
+
+// MODAL CHAT
+async function modalSendMessage() {
+  if (modalLoading) return;
+  const input = document.getElementById('modal-chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+
+  input.value = '';
+  const container = document.getElementById('modal-chat-messages');
+  appendMessage(container, 'user', text);
+
+  // Hide quick actions after first message
+  document.getElementById('modal-quick-actions').style.display = 'none';
+
+  modalHistory.push({ role: 'user', content: text });
+  modalLoading = true;
+  document.getElementById('modal-send-btn').disabled = true;
+
+  showTyping(container);
+
+  try {
+    const reply = await sendToAPI(modalHistory);
+    removeTyping(container);
+    appendMessage(container, 'bot', reply);
+    modalHistory.push({ role: 'assistant', content: reply });
+  } catch (err) {
+    removeTyping(container);
+    appendMessage(container, 'bot', 'De momento nao foi possivel obter uma resposta. Por favor contacte-nos pelo WhatsApp: +244 925 668 658');
+  }
+
+  modalLoading = false;
+  document.getElementById('modal-send-btn').disabled = false;
+  input.focus();
+}
+
+function modalQuickSend(msg) {
+  document.getElementById('modal-chat-input').value = msg;
+  modalSendMessage();
+}
+
+// SECTION CHAT
+async function sectionSendMessage() {
+  if (sectionLoading) return;
+  const input = document.getElementById('section-chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+
+  input.value = '';
+  const container = document.getElementById('section-chat-messages');
+  appendMessage(container, 'user', text);
+
+  document.getElementById('section-quick-actions').style.display = 'none';
+
+  sectionHistory.push({ role: 'user', content: text });
+  sectionLoading = true;
+  document.getElementById('section-send-btn').disabled = true;
+
+  showTyping(container);
+
+  try {
+    const reply = await sendToAPI(sectionHistory);
+    removeTyping(container);
+    appendMessage(container, 'bot', reply);
+    sectionHistory.push({ role: 'assistant', content: reply });
+  } catch (err) {
+    removeTyping(container);
+    appendMessage(container, 'bot', 'De momento nao foi possivel obter uma resposta. Por favor contacte-nos pelo WhatsApp: +244 925 668 658');
+  }
+
+  sectionLoading = false;
+  document.getElementById('section-send-btn').disabled = false;
+  input.focus();
+}
+
+function sectionQuickSend(msg) {
+  document.getElementById('section-chat-input').value = msg;
+  sectionSendMessage();
+}
+
+// ESC to close modal
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeChat(); });
+</script>
+</body>
+</html>
